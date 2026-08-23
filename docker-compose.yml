@@ -1,0 +1,9 @@
+services:
+  electric:
+    image: electricsql/electric:latest
+    environment:
+      DATABASE_URL: ${ELECTRIC_DATABASE_URL:?Set ELECTRIC_DATABASE_URL to the direct Postgres connection URL}
+      ELECTRIC_INSECURE: "true"
+    ports:
+      - "127.0.0.1:30000:3000"
+    restart: unless-stopped

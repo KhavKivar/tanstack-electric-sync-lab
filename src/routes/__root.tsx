@@ -4,6 +4,8 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import appCss from '../styles.css?url'
 
+import { DbClient, DbProvider } from '@tanstack/react-db'
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -27,6 +29,7 @@ export const Route = createRootRoute({
   }),
   shellComponent: RootDocument,
 })
+const dbClient = new DbClient()
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
@@ -34,8 +37,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
+
       <body>
-        {children}
+        <DbProvider client={dbClient}>{children}</DbProvider>
         <TanStackDevtools
           config={{
             position: 'bottom-right',

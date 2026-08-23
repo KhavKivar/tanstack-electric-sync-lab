@@ -11,6 +11,3 @@ dist-ssr
 .vinxi
 __unconfig*
 todos.json
-
-# Local database credentials (never commit)
-src/db/db.tsx
